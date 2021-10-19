@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base :: layout(~{::section})}">
+<head>
+    <title>Article | Newz Article</title>
+</head>
+<body>
+	<section>
+		<div class="bg-style pt-2 pb-2 pl-3 pr-3">
+			<h2 th:text="${article.articleName}"></h2>
+			<div class="text-right">
+				<small>- <span th:text="${article.articleAuthor}"></span></small>
+			</div>
+			<div th:if="${article.edit}" class="text-center mt-1">
+				<small class="text-danger">(Edited)</small>
+			</div>
+			<div class="text-center mt-1">
+				<img alt="image" width="80%" class="img-fluid" th:src="@{|/img/article/${article.imagePath}}" />
+			</div>
+			<div class="mt-2" th:utext="${article.content}"></div>
+			<hr  th:if="${relatedTag.size>0}" />
+			<h4 th:if="${relatedTag.size>0}" class="mt-3">Related Article :</h4>
+			<div class="row">
+				<div th:each="articleT : ${relatedTag}" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+					<a style="display: block;">
+						<img alt="image" width="80%" class="img-fluid" th:src="@{|/img/article/${articleT.imagePath}}" /> <br/>
+						<label th:text="${articleT.articleName}"></label>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

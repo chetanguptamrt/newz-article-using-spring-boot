@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base :: layout(~{::section})}">
+<head>
+    <title>Home | Newz Article</title>
+</head>
+<body>
+	<section>
+		<div class="bg-style pt-2 pb-2 pl-3 pr-3">
+			<h2>Recent Article</h2>
+			<div th:each="articleR : ${recentList}" class="mt-2 pl-2 pr-2">
+				<a style="display: block; text-decoration: none;" th:href="@{|/article/${articleR.id}}">
+					<img alt="image" width="70%" class="img-fluid" th:src="@{|/img/article/${articleR.imagePath}}" /><br/>
+					<label style="font-size: large;" class="font-weight-bold text-dark" th:text="${articleR.articleName}"></label>
+				</a>
+				<hr/>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

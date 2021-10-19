@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base :: layout(~{::section})}">
+<head>
+    <title>Edit Article</title>
+</head>
+<body>
+	<section>
+	    <div class="container-md mt-2 mb-4">
+	    	<h1 class="text-center">Edit Article</h1>
+	    	<div class="text-center"><small id="status" style="display:none;"></small></div>
+	    	<div class="row">
+	    		<div class="col-md-10 offset-md-1">
+					<form id="editArticleForm">
+						<input name="id" style="display: none;" th:value="${article.id}"/>
+					  	<div class="form-group">
+						    <label for="articleName">Article Name <span class="text-danger">*</span></label>
+						    <input type="text" class="form-control"  th:value="${article.articleName}" id="articleName" name="articleName" required="required" placeholder="Topic: Java SE Development Kit 17"/>
+					  	</div>
+					  	<div class="form-group">
+						    <label for="articleAuthor">Article Author <span class="text-danger">*</span></label>
+						    <input type="text" class="form-control" id="articleAuthor" th:value="${article.articleAuthor}" name="articleAuthor" required="required" placeholder="John Smith"/>
+					  	</div>
+					  	<div class="form-group">
+						    <label for="content">Content <span class="text-danger">*</span></label>
+						    <textarea class="form-control" id="content" name="content" placeholder="Enter content here"  th:text="${article.content}"></textarea>
+					  	</div>
+					  	<div class="form-group">
+						    <label for="tags">Tag <small class="text-danger">use ( , ) for separate</small></label>
+						    <textarea class="form-control" style="resize: none;" rows="5" id="tags" name="tags" placeholder="For ex: java,spring boot" th:text="${tag}"></textarea>
+					  	</div>
+					  	<div>
+						    <input th:checked="${article.active}" type="checkbox" id="active" name="actives" /> 
+						    <label for="active">Keep private</label>
+					  	</div>
+						<div class="text-center mb-3">
+							<button class="btn btn-primary" type="submit">Update Article</button>
+						</div>
+					</form>
+				</div>
+	    	</div>
+	    </div>
+		<script src="https://cdn.tiny.cloud/1/m9kyy1trys005on5eqy8lf832dg4zf7fvjonfudgx7tikqb8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+	    	tinymce.init({
+		        selector: '#content'
+		    });
+	    </script>
+	    <script th:src="@{/js/editArticle.js}"></script>
+	</section>
+</body>
+</html>
