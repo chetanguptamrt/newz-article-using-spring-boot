@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base :: layout(~{::section})}">
+<head>
+    <title>Subscriber</title>
+</head>
+<body>
+	<section>
+	    <div class="container-md mt-2 mb-5">
+	    	<h1 class="text-center">Subscriber</h1>
+	    	<div class="text-right mt-2 mb-2">
+	    		<button class="btn btn-danger btn-sm" onclick="deleteAllSubscriber()">Delete All Subscriber</button>
+	    	</div>
+			<div class="row">
+				<div th:each="subscriber : ${subscribers}" class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+					<label th:text="${subscriber.email}"></label>
+				</div>
+			</div>
+	    </div>
+	    <script type="text/javascript" th:src="@{/js/removeAllSubscriber.js}" ></script>
+	</section>
+</body>
+</html>
